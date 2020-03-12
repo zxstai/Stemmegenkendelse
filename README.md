@@ -2,8 +2,8 @@
 
 Et responsiv navigation over Slotshaven Gymnasium.
 
-## Getting Started
-
+## Demo
+[Demo](https://schoolview.bss.design/)
 
 ### Prerequisites
 
