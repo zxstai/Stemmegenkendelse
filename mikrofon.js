@@ -1,13 +1,25 @@
-window.onload = function (){
+const btn =document.querySelector('.talk')
 
-    var constrains = {audio: true, 
-                      Video: true};
-        navigator.mediaDevices.getUserMedia(constrains).then(function(mediaStream){ 
-        var video = document.querySelector('video');
-        video.srcObject = mediaStream;
-        video.play();
-        }).catch(function(err){
-            console.log("yikes, an error!")
-        })
+
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+
+recognition.onstart = function (){
+ console.log('Stemmer lytter');
 
 }
+ 
+recognition.onresult = function(event){
+    conseole.log(event);
+
+}
+
+btn.addEventListener('click', () =>{
+    recognition.start();
+});
+
+
+
+
+
