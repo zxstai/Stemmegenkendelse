@@ -1,0 +1,82 @@
+div#front {
+  position: absolute;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+}
+
+h1.fwhite {
+  color: white;
+}
+
+p.fwhite {
+  color: white;
+  font-weight: 200;
+  font-size: 12.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  display: inline-block;
+  line-height: 1em;
+}
+
+.letters {
+  font-weight: 200;
+  font-size: 1.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+}
+
+.letters .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+div#frontdiv {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+@media (min-width: 320px) {
+  h1.fwhite {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 768px) {
+  h1.fwhite {
+    font-size: 48px;
+  }
+}
+
+@media (min-width: 992px) {
+  h1.fwhite {
+    font-size: 64px;
+  }
+}
+
+@media (min-width: 320px) {
+  p.fwhite {
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 768px) {
+  p.fwhite {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 992px) {
+  p.fwhite {
+    font-size: 28px;
+  }
+}
