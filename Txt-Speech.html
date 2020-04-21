@@ -6,12 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
+<!-- Opsætning af HTML dokument -->
+
 <body>
     
     Select Voice: <select id='voiceList'></select> <br><br>
 
     <input id='txtInput' /> <br><br>
     <button id='btnSpeak'>Speak!</button>
+
+<!-- Opsætter voicelist og laver input til tekst og en knap der konvertere tekst til speech -->
 
     <script>
         var voiceList = document.querySelector('#voiceList');
@@ -20,10 +25,14 @@
         var synth = window.speechSynthesis;
         var voices = [];
 
+        //Et array over de elementer der indgår i koden
+
         PopulateVoices();
         if(speechSynthesis !== undefined){
             speechSynthesis.onvoiceschanged = PopulateVoices;
         }
+
+        //Denne funktion fylder listen ud med de fetchede stemmer
 
         btnSpeak.addEventListener('click', ()=> {
             var toSpeak = new SpeechSynthesisUtterance(txtInput.value);
@@ -36,6 +45,8 @@
             synth.speak(toSpeak);
         });
 
+        //Denne funkion tjekker efter events som når man skriver et input eller trykker på knappen
+
         function PopulateVoices(){
             voices = synth.getVoices();
             var selectedIndex = voiceList.selectedIndex < 0 ? 0 : voiceList.selectedIndex;
@@ -47,6 +58,8 @@
                 listItem.setAttribute('data-name', voice.name);
                 voiceList.appendChild(listItem);
             });
+
+            //Denne funktion henter listen af stemmer som Windows har
 
             voiceList.selectedIndex = selectedIndex;
         }
