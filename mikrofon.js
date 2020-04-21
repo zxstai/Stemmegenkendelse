@@ -3,8 +3,11 @@ const btn =document.querySelector('.talk')
 var timer;
 
 var noegleord = [
-    {"biblotek":4}, {"biblo":4}, {"bøger":4}, {"bog":4}, {"låne":4}, {"udlån":4}, {"aflevere":4}, 
-    {"fysik":71},{"fysiklaboratoriet":71},{"andreas":71},{"george":71},
+    {
+     "biblotek": ["biblo", "bøger", "bog", "låne", "udlån", "aflevere", "lokale 14"]
+    }
+
+    /*{"fysik":71},{"fysiklaboratoriet":71},{"andreas":71},{"george":71},
 
     {"information":100},{"studieadministration":100},{"oplysning":100}, 
     {"kontor":101},{"ledelse":101},{"rektor":101},{"leder":101},
@@ -13,10 +16,8 @@ var noegleord = [
     {"innolab":104}, {"inno":104}
 
     // Mangler lokale 63 og 21, det er sammensat ord. 
-
+*/
     ];
-
-
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
 recognition.lang = "da";
@@ -26,17 +27,47 @@ recognition.onstart = function (){
 
 } 
 
-recognition.onresult = function(event){
-    const ord = event.resultIndex;
-    const transcript = event.results[ord][0].transcript;
+/*Ørecognition.onresult = function(event){
+    var transcript = event.results[0][0].transcript;
     console.log(transcript);
-
+    for (e of noegleord) { //noegleord array
+        for (k of Object.values(e)[0]){
+            if (event.results[0][0].transcript.toLowerCase().includes(k)) {
+                console.log("Keyword: " + Object.keys(e));
+            }
+        }
+    }
 }
-
+*/
+/* recognition.onresult = event => {
+    const transcript = event.results[0][0].transcript.toLowerCase();
+    for (const obj of noegleord) {
+        for (const [key, words] of Object.entries(obj)) {
+            for (const word of words) {
+                if (transcript.includes(word)) {
+                    console.log("Keyword: %s", key);
+                }
+            }
+        }
+    }
+};
+*/
+ /* recognition.onresult = function(event) {
+     var transcript = event.results[0][0].transcript.toLowerCase();
+     console.log(transcript);
+     transcript.split(" ").forEach(collection => {
+         collection.forEach(word => {
+             if (noegleord.includes(word))
+                 console.log(`Keyword: ${word}, index: ${noegleord.findIndex(key => key == word)}`);
+         })
+     })
+ }
+*/
 btn.addEventListener('click', () =>{
     recognition.start();
     if (timer < 0){
         console.log("stopper med at lytte");
+
     }
     
     //setTimeout(btn.addEventListener()),3000);
@@ -45,17 +76,7 @@ btn.addEventListener('click', () =>{
         recognition.stop();
         console.log('Speech recognition has stopped.');
       }
-      for (var i=0; i<saetning.length; i++) { for (var j =0; j<noegleord.length; j++) {if(saetning[i] == noegleord[j].name) {noegleFundet = noegleord.val; break}}}
-      /*function nedtælling(){
-        timer = 5;
-        setInterval (nedtælling)(){
-            timer--;
-            if (counter === 0){
-
-            }
-        }
-
-      }*/
 });
+
 
 
