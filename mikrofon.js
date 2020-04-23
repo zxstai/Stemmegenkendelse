@@ -5,7 +5,26 @@ var timer;
 var noegleord = [
     {
      "biblotek": ["biblo", "bøger", "bog", "låne", "udlån", "aflevere", "lokale 14"]
+    },
+    {
+        "innolab": ["foredrag", "innolab"]
+    },
+    {
+        "fysik": ["fysik lokale", "fysik lokalet" "fysiklokale", "andreas", "george"]
+    },
+    {
+        "kontor": ["ledelse", "rektor", "katrine", "leder", "søren", "vicerektor", "vice rektor"]
+    },
+    {
+        "kantine": ["mad", "købe sandwich", "sandwich", "dagensret", "dagens ret", "sydsal", "sydsalen"]
+    },
+    {
+        "lokale21": ["","",""]
+    },
+    {
+        "studieadmin": ["","",""]
     }
+
 
     /*{"fysik":71},{"fysiklaboratoriet":71},{"andreas":71},{"george":71},
 
