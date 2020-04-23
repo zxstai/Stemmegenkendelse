@@ -10,7 +10,7 @@ var noegleord = [
         "innolab": ["foredrag", "innolab"]
     },
     {
-        "fysik": ["fysik lokale", "fysik lokalet" "fysiklokale", "andreas", "george"]
+        "fysik": ["fysik lokale", "fysik lokalet", "fysiklokale", "andreas", "george"]
     },
     {
         "kontor": ["ledelse", "rektor", "katrine", "leder", "søren", "vicerektor", "vice rektor"]
@@ -65,6 +65,7 @@ recognition.onstart = function (){
             for (const word of words) {
                 if (transcript.includes(word)) {
                     console.log("Keyword: %s", key);
+                    console.log(transcript);
                 }
             }
         }
