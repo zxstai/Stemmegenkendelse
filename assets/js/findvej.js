@@ -78,7 +78,6 @@ $(document).ready(function () {
         recognition.start();
         $("#lytterTekst").html("Lytter. . .");
         console.log('Lytter');
-        //setTimeout (6000);
     })
 });
 
@@ -108,11 +107,17 @@ recognition.onresult = event => {
                 if (transcript.includes(word)) {
                     console.log("Keyword: %s", key);
                     console.log(transcript);
-                    $("#front").html($("#" + key).show());                   
+                    skjulKort();
+                    $("#frontdiv").hide();
+                    $("#" + key).show();
+                    return;                 
                 }
             }
         }
     }
+    $("#frontdiv").hide();
+    skjulKort();
+    $("#error").show();
 };
 
 /*knap.addEventListener('click', () => {
