@@ -74,7 +74,7 @@ $(document).ready(function () {
     skjulKort();
 
     //hvis knappen (grønne mikrofon) bliver trykket på så starte programmet med at lytte efter stemme input fra brugeren
-    $(".KNAP").on('click', function(event){
+    $(document).on('click',".KNAP", function(event){
         recognition.start();
         $("#lytterTekst").html("Lytter. . .");
         console.log('Lytter');
