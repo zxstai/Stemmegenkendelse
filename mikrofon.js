@@ -39,7 +39,7 @@ recognition.onstart = function (){
     }
 }
 */
-/* recognition.onresult = event => {
+ recognition.onresult = event => {
     const transcript = event.results[0][0].transcript.toLowerCase();
     for (const obj of noegleord) {
         for (const [key, words] of Object.entries(obj)) {
@@ -51,18 +51,7 @@ recognition.onstart = function (){
         }
     }
 };
-*/
- /* recognition.onresult = function(event) {
-     var transcript = event.results[0][0].transcript.toLowerCase();
-     console.log(transcript);
-     transcript.split(" ").forEach(collection => {
-         collection.forEach(word => {
-             if (noegleord.includes(word))
-                 console.log(`Keyword: ${word}, index: ${noegleord.findIndex(key => key == word)}`);
-         })
-     })
- }
-*/
+
 btn.addEventListener('click', () =>{
     recognition.start();
     if (timer < 0){
