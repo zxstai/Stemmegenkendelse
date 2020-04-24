@@ -81,3 +81,18 @@ div#frontdiv {
     font-size: 28px;
   }
 }
+
+.rooms {
+  position: relative;
+  font-weight: 900;
+  font-size: 4.5em;
+}
+
+.rooms .letters {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 0.3em;
+  right: 0;
+  opacity: 0;
+}
