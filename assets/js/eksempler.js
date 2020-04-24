@@ -44,6 +44,18 @@ anime.timeline({loop: true})
     easing: "easeInExpo",
     delay: rooms.delay
   }).add({
+    targets: '.rooms .letters-4',
+    opacity: rooms.opacityIn,
+    scale: rooms.scaleIn,
+    duration: rooms.durationIn
+  }).add({
+    targets: '.rooms .letters-4',
+    opacity: 0,
+    scale: rooms.scaleOut,
+    duration: rooms.durationOut,
+    easing: "easeInExpo",
+    delay: rooms.delay
+  }).add({
     targets: '.rooms',
     opacity: 0,
     duration: 500,
