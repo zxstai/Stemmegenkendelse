@@ -76,7 +76,7 @@ $(document).ready(function () {
     //hvis knappen (grønne mikrofon) bliver trykket på så starte programmet med at lytte efter stemme input fra brugeren
     $(document).on('click',".KNAP", function(event){
         recognition.start();
-        $("#lytterTekst").html("Lytter. . .");
+        $(".lytterTekst").html("Lytter. . .");
         console.log('Lytter');
     })
 });
@@ -131,7 +131,7 @@ recognition.onresult = event => {
 */
     recognition.onspeechend = function () {
         recognition.stop();
-        $("#lytterTekst").html("");
+        $(".lytterTekst").html("");
         console.log('Speech recognition has stopped.');
     };
 
