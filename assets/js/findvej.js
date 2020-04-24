@@ -10,7 +10,7 @@ anime.timeline({ loop: true })
         translateZ: 0,
         opacity: [0, 1],
         easing: "easeOutExpo",
-        duration: 5000,
+        duration: 7000,
         delay: (el, i) => 500 + 30 * i
     }).add({
         targets: '.fwhite',
