@@ -3,7 +3,7 @@
 Et responsiv navigation over Slotshaven Gymnasium.
 
 ## Demo - Kun i chrome
-[Demo](http://dadfucked.me/schoolView)
+[Demo](https://dadfucked.me/schoolView)
 
 ### Prerequisites
 
