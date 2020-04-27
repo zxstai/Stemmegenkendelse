@@ -104,8 +104,6 @@ recognition.onresult = event => {
         for (const [key, words] of Object.entries(obj)) {
             for (const word of words) {
                 if (transcript.includes(word)) { //hvis at transscript indeholder vores keyword
-                    console.log("Keyword: %s", key); //logger vores keyword
-                    console.log(transcript); //hvad er er blevet sagt
                     skjulKort(); //skjuler alle kort (det er til hvis folk har søgt på noget før, så den ikke render det 2 gange oven på hinanden
                     $("#frontdiv").hide(); //skjuler front siden, da vi skal vise et kort lige om lidt
                     $("#" + key).show(); //viser med brug af DOM manipulation
