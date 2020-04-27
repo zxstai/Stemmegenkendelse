@@ -25,34 +25,35 @@ anime.timeline({ loop: true })
 //Ordbog til forskellige keywords
 var noegleord = [
     {
-        "bibliotek": ["biblo", "bøger", "bog", "låne", "udlån", "aflevere", "lokale 4"]
+        "biblotek": ["biblo", "bøger", "bog", "låne", "udlån", "aflevere", "lokale 4", "maria", "biblotek", "bibloteket", "bibliotekar", "bibliotekaren"]
     },
-    {
-        "innolab": ["innolab"]
+    /*{
+        "innolab": ["innolab", "innolab 1", "innolab 2", "innolab 3", "inno lab"] //udkommenteret da et kort til Innolab ikke findes lige nu
     },
-    {
-        "nordsal1": ["foredrag"]
+    */{
+        "fysik": ["fysik lokale", "fysik lokalet", "fysiklokale", "andreas", "george", "georg", "geo"]
     },
-    {
-        "fysik": ["fysik lokale", "fysik lokalet", "fysiklokale", "andreas", "georg", "geo"]
-    },
-    {
+    /*{
         "kontor": ["ledelse", "rektor", "katrine", "leder", "søren", "vicerektor", "vice rektor"]
     },
-    {
-        "kantine": ["mad", "købe sandwich", "sandwich", "dagensret", "dagens ret", "sydsal", "sydsalen"]
+    */{
+        "kantine": ["mad", "købe sandwich", "sandwich", "dagensret", "dagens ret", "sydsal", "sydsalen", "kantine", "kantinen", "linda"]
     },
     {
-        "lokale21": ["x", "x", "x"]
+        "lokale21": ["klasselokale21","klasse lokale 21","klasse 21", "rum 21"]
     },
     {
-        "studieadmin": ["x", "x", "x"]
+        "studieadmin": ["joan", "information", "administration", "4g", "fjerde gear", "pakke", "pakker", "gls pakke", "gls", "postnord", "admin", "staff", "lærer"]
+    },
+    {
+        "nordsal1":["foredrag", "hanne", "eksamsinformation", "eksams information"]
     }
 ];
 //Speech variabler
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
+recognition.lang = 'da';
 
 //Funktion til at skjule vores vejvisningskort
  function skjulKort() {
