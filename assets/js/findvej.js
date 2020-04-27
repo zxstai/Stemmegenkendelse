@@ -25,7 +25,7 @@ anime.timeline({ loop: true })
 //Ordbog til forskellige keywords
 var noegleord = [
     {
-        "biblotek": ["biblo", "bøger", "bog", "låne", "udlån", "aflevere", "lokale 4", "maria", "biblotek", "bibloteket", "bibliotekar", "bibliotekaren"]
+        "bibliotek": ["biblo", "bøger", "bog", "låne", "udlån", "aflevere", "lokale 4", "maria", "biblotek", "bibloteket", "bibliotekar", "bibliotekaren"]
     },
     /*{
         "innolab": ["innolab", "innolab 1", "innolab 2", "innolab 3", "inno lab"] //udkommenteret da et kort til Innolab ikke findes lige nu
@@ -69,6 +69,17 @@ recognition.lang = 'da';
 function error() {
     $("#error").hide();
 }
+
+//nedtæller funktion
+var timer
+function nedtæller (){
+    recognition.stop()
+    skjulKort();
+    $("#frontdiv").show();
+    console.log("timedout");
+
+}
+
 //Opstart funktion
 $(document).ready(function () {
     //starter med at skjule vores kort
@@ -76,6 +87,8 @@ $(document).ready(function () {
 
     //hvis knappen (grønne mikrofon) bliver trykket på så starte programmet med at lytte efter stemme input fra brugeren
     $(document).on('click',".KNAP", function(event){
+        clearTimeout(timer);
+        console.log("timer stoppet")//timer stoppet
         recognition.start();
         $(".lytterTekst").html("Lytter. . .");
         console.log('Lytter');
@@ -85,51 +98,33 @@ $(document).ready(function () {
 
 
 //Stemme genkendelse og DOM manipulation. -------------------------------------------------------------------------------
-
-var timer;
-
-/*Ørecognition.onresult = function(event){
-    var transcript = event.results[0][0].transcript;
-    console.log(transcript);
-    for (e of noegleord) { //noegleord array
-        for (k of Object.values(e)[0]){
-            if (event.results[0][0].transcript.toLowerCase().includes(k)) {
-                console.log("Keyword: " + Object.keys(e));
-            }
-        }
-    }
-}
-*/
 recognition.onresult = event => {
-    const transcript = event.results[0][0].transcript.toLowerCase();
+    const transcript = event.results[0][0].transcript.toLowerCase(); //laver det til små bogstaver, da ellers kan der opstå problemer med at nogen egenavne.
     for (const obj of noegleord) {
         for (const [key, words] of Object.entries(obj)) {
             for (const word of words) {
-                if (transcript.includes(word)) {
-                    console.log("Keyword: %s", key);
-                    console.log(transcript);
-                    skjulKort();
-                    $("#frontdiv").hide();
-                    $("#" + key).show();
-                    return;                 
+                if (transcript.includes(word)) { //hvis at transscript indeholder vores keyword
+                    console.log("Keyword: %s", key); //logger vores keyword
+                    console.log(transcript); //hvad er er blevet sagt
+                    skjulKort(); //skjuler alle kort (det er til hvis folk har søgt på noget før, så den ikke render det 2 gange oven på hinanden
+                    $("#frontdiv").hide(); //skjuler front siden, da vi skal vise et kort lige om lidt
+                    $("#" + key).show(); //viser med brug af DOM manipulation
+                    //20 sekunders timeout på resultat
+                    timer = setTimeout(nedtæller,20000);
+                    return; //hvis der ikke kommer et gyldigt resultat, jamen så skal koden ikke køres
                 }
             }
         }
     }
+    //derfor skal front fjernes (hvis man er på forsiden og siger en ting der ikke giver mening for koden, altså ingen nøgle ord bliver forstået
     $("#frontdiv").hide();
-    skjulKort();
-    $("#error").show();
+    skjulKort(); //skjuler alle sider
+    $("#error").show(); //viser kun error vinduet for at indikere at det folk prøvede at søge om ikke blev korrekt registeret
+    setTimeout(nedtæller,10000); //folk har 10 sekunder til at trykke på ny søgning
 };
 
-/*knap.addEventListener('click', () => {
-    recognition.start();
-    if (timer < 0) {
-        console.log("stopper med at lytte");
 
-    }
 
-    //setTimeout(btn.addEventListener()),3000);
-*/
     recognition.onspeechend = function () {
         recognition.stop();
         $(".lytterTekst").html("");
