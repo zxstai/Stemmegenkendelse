@@ -10,7 +10,7 @@ anime.timeline({ loop: true })
         translateZ: 0,
         opacity: [0, 1],
         easing: "easeOutExpo",
-        duration: 5000,
+        duration: 7000,
         delay: (el, i) => 500 + 30 * i
     }).add({
         targets: '.fwhite',
@@ -22,39 +22,37 @@ anime.timeline({ loop: true })
     });
 //---------------------------------------------------------------------------------------------------------------------
 
-//Ordbog til forskellige keywords som vil blive kigget efter i de sætninger som brugeren indtaler.
+//Ordbog til forskellige keywords
 var noegleord = [
     {
-     "biblotek": ["biblo", "bøger", "bog", "låne", "udlån", "aflevere", "lokale 4", "maria", "biblotek", "bibloteket", "bibliotekar", "bibliotekaren"]
+        "bibliotek": ["biblo", "bøger", "bog", "låne", "udlån", "aflevere", "lokale 4"]
     },
-    /*{
-        "innolab": ["innolab", "innolab 1", "innolab 2", "innolab 3", "inno lab"] //udkommenteret da et kort til Innolab ikke findes lige nu
+    {
+        "innolab": ["innolab"]
     },
-    */{
-        "fysik": ["fysik lokale", "fysik lokalet", "fysiklokale", "andreas", "george", "georg", "geo"]
+    {
+        "nordsal1": ["foredrag"]
     },
-    /*{
+    {
+        "fysik": ["fysik lokale", "fysik lokalet", "fysiklokale", "andreas", "georg", "geo"]
+    },
+    {
         "kontor": ["ledelse", "rektor", "katrine", "leder", "søren", "vicerektor", "vice rektor"]
     },
-    */{
-        "kantine": ["mad", "købe sandwich", "sandwich", "dagensret", "dagens ret", "sydsal", "sydsalen", "kantine", "kantinen", "linda"]
+    {
+        "kantine": ["mad", "købe sandwich", "sandwich", "dagensret", "dagens ret", "sydsal", "sydsalen"]
     },
     {
-        "lokale21": ["klasselokale21","klasse lokale 21","klasse 21", "rum 21"]
+        "lokale21": ["x", "x", "x"]
     },
     {
-        "studieadmin": ["joan", "information", "administration", "4g", "fjerde gear", "pakke", "pakker", "gls pakke", "gls", "postnord", "admin", "staff", "lærer"]
-    },
-    {
-        "nordsal1":["foredrag", "hanne", "eksamsinformation", "eksams information"]
+        "studieadmin": ["x", "x", "x"]
     }
 ];
-
 //Speech variabler
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
-recognition.lang = 'da';
 
 //Funktion til at skjule vores vejvisningskort
  function skjulKort() {
@@ -103,7 +101,6 @@ var timer;
 */
 recognition.onresult = event => {
     const transcript = event.results[0][0].transcript.toLowerCase();
-    console.log(transcript);
     for (const obj of noegleord) {
         for (const [key, words] of Object.entries(obj)) {
             for (const word of words) {
@@ -137,5 +134,3 @@ recognition.onresult = event => {
         $(".lytterTekst").html("");
         console.log('Speech recognition has stopped.');
     };
-
-
