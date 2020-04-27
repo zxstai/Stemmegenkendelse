@@ -54,6 +54,7 @@ var noegleord = [
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
+recognition.lang = 'da';
 
 //Funktion til at skjule vores vejvisningskort
  function skjulKort() {
